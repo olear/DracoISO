@@ -1,0 +1,12 @@
+cloog-ppl-0.15.7-1.2.el6.x86_64.rpm
+cpp-4.4.7-4.el6.x86_64.rpm
+gcc-4.4.7-4.el6.x86_64.rpm
+gcc-c++-4.4.7-4.el6.x86_64.rpm
+glibc-devel-2.12-1.132.el6.x86_64.rpm
+glibc-headers-2.12-1.132.el6.x86_64.rpm
+kernel-devel-2.6.32-431.11.2.el6.x86_64.rpm
+kernel-headers-2.6.32-431.11.2.el6.x86_64.rpm
+libgomp-4.4.7-4.el6.x86_64.rpm
+libstdc++-devel-4.4.7-4.el6.x86_64.rpm
+mpfr-2.4.1-6.el6.x86_64.rpm
+ppl-0.10.2-11.el6.x86_64.rpm

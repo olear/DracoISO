@@ -1,0 +1,1008 @@
+diff -burN etc.orig/HOSTNAME etc/HOSTNAME
+--- etc.orig/HOSTNAME	2009-06-16 00:59:43.000000000 +0200
++++ etc/HOSTNAME	2014-05-09 10:07:46.878164222 +0200
+@@ -1 +1 @@
+-slackware.example.net
++linux.example.net
+diff -burN etc.orig/issue etc/issue
+--- etc.orig/issue	2013-11-01 02:06:48.000000000 +0100
++++ etc/issue	2014-05-09 10:08:03.414164208 +0200
+@@ -2,7 +2,7 @@
+ 
+ 
+ 
+-Welcome to the Slackware Linux installation disk! (version 14.1)
++Welcome to the Linux installation disk!
+ 
+ ######  IMPORTANT!  READ THE INFORMATION BELOW CAREFULLY.  ######
+ 
+@@ -21,5 +21,4 @@
+ - If you do not have a color monitor, type:  TERM=vt100
+   before you start 'setup'.
+ 
+-You may now login as 'root'.
+ 
+diff -burN etc.orig/rc.d/rc.S etc/rc.d/rc.S
+--- etc.orig/rc.d/rc.S	2013-03-10 21:30:59.000000000 +0100
++++ etc/rc.d/rc.S	2014-05-09 10:08:26.270164191 +0200
+@@ -202,7 +202,7 @@
+ echo "`/bin/uname -a | /bin/cut -d\  -f1,3`." >> /etc/motd
+ echo >> /etc/motd
+ cat << EOF >> /etc/motd
+-If you're upgrading an existing Slackware system, you might want to
++If you're upgrading an existing Linux system, you might want to
+ remove old packages before you run 'setup' to install the new ones. If
+ you don't, your system will still work but there might be some old files
+ left laying around on your drive.
+@@ -243,6 +243,4 @@
+ # Fake login:  (fooled ya! ;^)
+ 
+ cat /etc/issue
+-echo -n "slackware login: "
+-read BOGUS_LOGIN
+ cat /etc/motd
+diff -burN usr/lib/setup.orig/FDhelp usr/lib/setup/FDhelp
+--- usr/lib/setup.orig/FDhelp	2013-11-01 02:06:48.000000000 +0100
++++ usr/lib/setup/FDhelp	2014-05-09 09:58:43.754164656 +0200
+@@ -1,5 +1,5 @@
+ 
+-Slackware Linux Help
++ Linux Help
+ ____________________
+ 
+ First, a little help on help.  Whenever you encounter a text
+@@ -47,7 +47,7 @@
+ 
+ A useful trick is to log into the second virtual console during the
+ installation.  Then you can use commands such as 'df' to check how
+-full your hard drive is getting.  Also, once the Slackware CD-ROM
++full your hard drive is getting.  Also, once the  CD-ROM
+ has been mounted on /cdrom, most of the commands in the disc's live
+ filesystem will be usable.
+ 
+@@ -58,7 +58,7 @@
+ or you wish to use GPT, skip to the section below on GPT PARTITIONING.
+ 
+ Now lets take a look at how you progress through a typical Linux
+-installation with the Slackware distribution.  First, you'll have
++installation with the  distribution.  First, you'll have
+ to make sure your hard drive has been partitioned to accept Linux.
+ The setup program does not do this for you.
+ 
+@@ -88,7 +88,7 @@
+ large pieces of software, or to work with large files such as might be
+ used in desktop publishing or CD-ROM mastering applications.
+ 
+-The entire Slackware system (everything -- all the X servers, Emacs,
++The entire  system (everything -- all the X servers, Emacs,
+ the works) will use about 8 gigabytes of hard drive space,
+ so 10 - 15 gigs is sufficient for a complete installation.
+ 
+@@ -96,7 +96,7 @@
+ partition of 110 MB.  (Of course, that was back in the days of Linux
+ version 0.99p11 or so...)  Still, with careful selection you can still
+ squeeze a small Linux system onto a system, but this is not recommended
+-for beginners.  It's more useful when utilizing Slackware as a base for
++for beginners.  It's more useful when utilizing  as a base for
+ an embedded system.  Most people should be going a full installation.
+ It's faster and easier, and less error-prone.
+ 
+@@ -107,7 +107,7 @@
+ to the older version (like me).  Either one will get the job done.
+ 
+ Make sure you use Linux fdisk to tag partitions as type 83 (Linux, the
+-default) or type 82 (Linux swap) so the Slackware setup program will 
++default) or type 82 (Linux swap) so the  setup program will 
+ recognize them.  Use the 't' command for that, and 'w' to write out the
+ changes.
+ 
+@@ -157,7 +157,7 @@
+ partitions will be displayed as a bar chart at the bottom of the window.
+ Mouse over the main Windows partition (probably the largest NTFS partition)
+ and right click to bring up a menu.  Select "Shrink Volume..." from this
+-menu.  Shrink the partition to make enough free space for Slackware's root,
++menu.  Shrink the partition to make enough free space for 's root,
+ swap, and other partitions.
+ 
+ NOTE:  Rather than creating true free space, this resizing operation may
+@@ -221,7 +221,7 @@
+ 
+ ADDSWAP   (set up my swapspace)
+ TARGET    (set up my Linux/Windows partitions and /etc/fstab)
+-SOURCE    (select the source location for the Slackware Linux
++SOURCE    (select the source location for the  Linux
+            packages)
+ SELECT    (pick the package categories to install)
+ INSTALL   (install the software, generally with "full")
+@@ -245,7 +245,7 @@
+ ...WHEN YOU'RE DONE:
+ 
+ 
+-EXIT: This leaves Slackware Linux setup.
++EXIT: This leaves  Linux setup.
+ 
+ 
+ Have fun installing and running Linux!
+diff -burN usr/lib/setup.orig/INCISO usr/lib/setup/INCISO
+--- usr/lib/setup.orig/INCISO	2009-06-16 00:59:43.000000000 +0200
++++ usr/lib/setup/INCISO	2014-05-09 09:58:43.755164656 +0200
+@@ -10,7 +10,7 @@
+  if [ -n "$IISO" ]; then
+   cat << EOF > $TMP/tempmsg
+ 
+-An ISO image of Slackware's install DVD was found.
++An ISO image of 's install DVD was found.
+ Do you want me to mount the ISO image and use this as the package source?
+ 
+ EOF
+diff -burN usr/lib/setup.orig/INSCD usr/lib/setup/INSCD
+--- usr/lib/setup.orig/INSCD	2013-11-01 02:06:48.000000000 +0100
++++ usr/lib/setup/INSCD	2014-05-09 09:58:43.757164656 +0200
+@@ -10,7 +10,7 @@
+ rm -f $TMP/SeTmount $TMP/SeTDS $TMP/SeTCDdev $TMP/reply
+ 
+ dialog --title "SCANNING FOR CD or DVD DRIVE" --menu \
+-"Make sure the Slackware disc is in your CD/DVD drive, \
++"Make sure the  disc is in your CD/DVD drive, \
+ and then press ENTER to begin the scanning process. \
+ Or, if you'd rather specify the device name manually \
+ (experts only), choose that option below." \
+@@ -70,7 +70,7 @@
+  if [ "$REPLY" = "custom" ]; then
+   dialog --title "ENTER CD/DVD DEVICE MANUALLY" --inputbox \
+ "Please enter the name of the CD/DVD device (such as /dev/hdc) that \
+-you wish to use to mount the Slackware CD/DVD:" \
++you wish to use to mount the  CD/DVD:" \
+ 9 70 2> $TMP/reply
+   if [ ! -r $TMP/reply ]; then
+    # cancel or esc
+@@ -117,7 +117,7 @@
+ # Search for SCSI/PATA/SATA CD/DVD drives:
+ if [ "$DRIVE_FOUND" = "" ]; then
+  dialog --title "SCANNING" --infobox "Scanning for a \
+-CD/DVD drive containing a Slackware disc..." 4 50
++CD/DVD drive containing a  disc..." 4 50
+  sleep 3
+  for device in \
+   /dev/sr0 /dev/sr1 /dev/sr2 /dev/sr3 \
+@@ -134,7 +134,7 @@
+ # Search the old IDE interfaces:
+ if [ "$DRIVE_FOUND" = "" ]; then
+  dialog --title "SCANNING" --infobox "Scanning for an IDE \
+-CD/DVD drive containing a Slackware disc..." 4 56
++CD/DVD drive containing a  disc..." 4 56
+  sleep 3
+  for device in \
+   /dev/hdd /dev/hdc /dev/hdb /dev/hda \
+@@ -154,7 +154,7 @@
+ # Search for parallel port ATAPI CD/DVD drives:
+ if [ "$DRIVE_FOUND" = "" ]; then
+  dialog --title "SCANNING" --infobox "Scanning for a parallel port \
+-ATAPI CD/DVD drive containing a Slackware disc..." 4 52
++ATAPI CD/DVD drive containing a  disc..." 4 52
+  sleep 3
+  for device in \
+   /dev/pcd0 /dev/pcd1 /dev/pcd2 /dev/pcd3 \
+@@ -199,7 +199,7 @@
+  "A CD/DVD drive could not be found on any of the devices that were \
+ scanned.  Possible reasons include using a bootdisk or kernel that \
+ doesn't support your drive, failing to pass parameters needed by some \
+-drives to the kernel, not having the Slackware disc in your CD/DVD \
++drives to the kernel, not having the  disc in your CD/DVD \
+ drive, or using a drive connected to a Plug and Play soundcard (in this \
+ case, connecting the drive directly to the IDE interface often helps). \
+ Please make sure you are using the correct bootdisk for your hardware, \
+@@ -219,7 +219,7 @@
+  mount -o ro -t iso9660 $DRIVE_FOUND /var/log/mount 1> $RDIR 2> $RDIR
+  if [ $? = 0 ]; then # mounted successfully
+   dialog --title "CD/DVD DRIVE FOUND" --sleep 3 --infobox \
+-  "A Slackware disc was found in device $DRIVE_FOUND." 3 52
++  "A  disc was found in device $DRIVE_FOUND." 3 52
+   break
+  else # failed to mount
+   dialog --title "MOUNT ERROR" --menu "There was an error \
+diff -burN usr/lib/setup.orig/INSdir usr/lib/setup/INSdir
+--- usr/lib/setup.orig/INSdir	2013-11-01 02:06:48.000000000 +0100
++++ usr/lib/setup/INSdir	2014-05-09 09:58:43.758164656 +0200
+@@ -3,7 +3,7 @@
+ if [ ! -d $TMP ]; then
+   mkdir -p $TMP
+ fi
+-# Include function to check for Slackware ISO images:
++# Include function to check for  ISO images:
+ . /usr/lib/setup/INCISO
+ while [ 0 ]; do
+ rm -f $TMP/SeTDS $TMP/SeTmount
+@@ -44,7 +44,7 @@
+ SOURCEDIR="`cat $TMP/sourcedir`"
+ rm -f $TMP/sourcedir $TMP/tempmsg
+ mkdir -p /var/log/mount
+-# First, check if a Slackware ISO image is present in $SOURCEDIR
++# First, check if a  ISO image is present in $SOURCEDIR
+ if check_iso_image $SOURCEDIR ; then
+  echo "/var/log/mount/slackware64" > $TMP/SeTDS
+ else
+diff -burN usr/lib/setup.orig/INShd usr/lib/setup/INShd
+--- usr/lib/setup.orig/INShd	2013-11-01 02:06:48.000000000 +0100
++++ usr/lib/setup/INShd	2014-05-09 09:58:43.759164657 +0200
+@@ -3,7 +3,7 @@
+ if [ ! -d $TMP ]; then
+   mkdir -p $TMP
+ fi
+-# Include function to check for Slackware ISO images:
++# Include function to check for  ISO images:
+ . /usr/lib/setup/INCISO
+ while [ 0 ]; do
+ rm -f $TMP/SeTDS $TMP/SeTmount $TMP/SeTsource
+@@ -26,7 +26,7 @@
+ while [ 0 ]; do
+  cat << EOF > $TMP/tempmsg
+ In order to install directly from the hard disk you must have a
+-partition (such as /dev/sda1, /dev/sdb5, etc) with the Slackware
++partition (such as /dev/sda1, /dev/sdb5, etc) with the 
+ distribution's slackware64/ directory like you'd find it on the FTP
+ site.  It can be in another directory.  For example, if the
+ distribution is in /stuff/slackware64/, then you have to have
+@@ -34,7 +34,7 @@
+ on each containing the files that would be in that directory on
+ the FTP site.  You may install from FAT or Linux partitions.
+ 
+-Please enter the partition (such as /dev/sda1) where the Slackware
++Please enter the partition (such as /dev/sda1) where the 
+ sources can be found, or [enter] to see a partition list:
+ EOF
+  dialog --title "INSTALLING FROM HARD DISK" --inputbox \
+@@ -57,7 +57,7 @@
+ "Now we need to know the full path on this partition to the\n\
+ slackware64/ directory where the directories containing\n\
+ installation files and packages to be installed are kept.\n\
+-For example, if you downloaded Slackware into the /stuff\n\
++For example, if you downloaded  into the /stuff\n\
+ directory on your hard drive (so that you have the\n\
+ directories /stuff/slackware64/a, /stuff/slackware64/ap, and so on\n\
+ each containing the files that would be in that directory on\n\
+@@ -65,7 +65,7 @@
+ \n\
+       /stuff/slackware64\n\
+ \n\
+-What directory are the Slackware sources in?" \
++What directory are the  sources in?" \
+ 19 65 2> $TMP/source.dir
+ if [ ! $? = 0 ]; then
+  rm -f $TMP/source.dir
+@@ -111,7 +111,7 @@
+  fi # mount error
+ fi
+ 
+-# First, check if a Slackware ISO image is present in $SLACK_SOURCE_LOCATION
++# First, check if a  ISO image is present in $SLACK_SOURCE_LOCATION
+ if check_iso_image /var/log/mount/$SLACK_SOURCE_LOCATION /var/log/mntiso ; then
+  echo "/var/log/mntiso/slackware64" > $TMP/SeTDS
+  echo "-source_mounted" > $TMP/SeTmount
+diff -burN usr/lib/setup.orig/INSNFS usr/lib/setup/INSNFS
+--- usr/lib/setup.orig/INSNFS	2013-11-01 02:06:48.000000000 +0100
++++ usr/lib/setup/INSNFS	2014-05-09 09:58:43.760164657 +0200
+@@ -3,7 +3,7 @@
+ if [ ! -d $TMP ]; then
+   mkdir -p $TMP
+ fi
+-# Include function to check for Slackware ISO images:
++# Include function to check for  ISO images:
+ . /usr/lib/setup/INCISO
+ if [ -f $TMP/Punattended ]; then
+  eval $(grep "^NFS_SERVER=" $TMP/Punattended)
+@@ -21,7 +21,7 @@
+ 
+ Good! We're all set on the local end, but now we need to know
+ where to find the software packages to install.  First, we need
+-the IP address of the machine where the Slackware sources are
++the IP address of the machine where the  sources are
+ stored.
+ 
+ EOF
+@@ -44,7 +44,7 @@
+ 
+  cat << EOF > $TMP/tempmsg
+ 
+- There must be a directory on the server with the Slackware
++ There must be a directory on the server with the 
+  packages and files arranged in a tree like the FTP site.
+ 
+  The installation script needs to know the name of the 
+@@ -52,7 +52,7 @@
+  subdirectories.  For example, if your A series is found at 
+  /slack/slackware64/a, then you would respond: /slack/slackware64
+  
+- What is the Slackware source directory?
++ What is the  source directory?
+ EOF
+  dialog --title "SELECT SOURCE DIRECTORY" --inputbox "`cat $TMP/tempmsg`" 18 \
+  65 $REMOTE_PATH 2> $TMP/slacksrc
+@@ -110,7 +110,7 @@
+  rm -f $TMP/nfsout
+  if [ $RET = 1 ]; then
+   # OK with the NFS mount.
+-  # First, check if a Slackware ISO image is present in /var/log/mount
++  # First, check if a  ISO image is present in /var/log/mount
+   if check_iso_image /var/log/mount /var/log/mntiso ; then
+    echo "/var/log/mntiso/slackware64" > $TMP/SeTDS 
+   elif [ -r /var/log/mount/slackware64/PACKAGES.TXT ]; then
+diff -burN usr/lib/setup.orig/INSSMB usr/lib/setup/INSSMB
+--- usr/lib/setup.orig/INSSMB	2013-11-01 02:06:48.000000000 +0100
++++ usr/lib/setup/INSSMB	2014-05-09 09:58:43.761164657 +0200
+@@ -22,7 +22,7 @@
+ 
+ Good! We're all set on the local end, but now we need to know
+ where to find the software packages to install. First, we need
+-the share address of the Samba server where the Slackware sources
++the share address of the Samba server where the  sources
+ are stored.
+ Example share address: //192.168.0.1/public
+ 
+@@ -46,7 +46,7 @@
+ 
+  cat << EOF > $TMP/tempmsg
+ 
+- There must be a directory on the server with the Slackware
++ There must be a directory on the server with the 
+  packages and files arranged in a tree like the FTP site.
+ 
+  The installation script needs to know the name of the
+@@ -54,7 +54,7 @@
+  subdirectories. For example, if your A series is found at 
+  /slack/slackware64/a, then you would respond: /slack/slackware64
+  
+- What is the Slackware source directory?
++ What is the  source directory?
+ EOF
+  dialog --title "SELECT SOURCE DIRECTORY" --inputbox "`cat $TMP/tempmsg`" \
+  17 70 $REMOTE_PATH 2> $TMP/slacksrc
+@@ -81,10 +81,10 @@
+   if [ -f /var/log/mount/$REMOTE_PATH/a/tagfile \
+        -o -f /var/log/mount/$REMOTE_PATH/slackware64/a/tagfile ];
+   then
+-   echo "A Slackware package tree was found! Ready to continue." >> $TMP/mntout
++   echo "A  package tree was found! Ready to continue." >> $TMP/mntout
+    DEFANSW="no"
+   else
+-   echo "No Slackware package tree found at the indicated path!" >> $TMP/mntout
++   echo "No  package tree found at the indicated path!" >> $TMP/mntout
+    DEFANSW="yes"
+   fi
+  fi
+diff -burN usr/lib/setup.orig/installpkg usr/lib/setup/installpkg
+--- usr/lib/setup.orig/installpkg	2013-11-01 02:06:48.000000000 +0100
++++ usr/lib/setup/installpkg	2014-05-09 09:58:43.764164657 +0200
+@@ -1,6 +1,6 @@
+ #!/bin/sh
+ # Copyright 1994, 1998, 2000  Patrick Volkerding, Concord, CA, USA 
+-# Copyright 2001, 2003  Slackware Linux, Inc., Concord, CA, USA
++# Copyright 2001, 2003   Slackware, Inc., Concord, CA, USA
+ # Copyright 2007, 2009, 2011  Patrick Volkerding, Sebeka, MN, USA 
+ # All rights reserved.
+ #
+@@ -550,7 +550,7 @@
+   echo "FILE LIST:" >> $ADM_DIR/packages/$shortname
+   ( cd $ROOT/ ; $packagecompression -dc | $TAR -xlUpvf - ) < $package >> $TMP/$shortname 2> /dev/null
+   if [ "$(cat $TMP/$shortname | grep '^\./' | wc -l | tr -d ' ')" = "1" ]; then
+-    # Good.  We have a package that meets the Slackware spec.
++    # Good.  We have a package that meets the  spec.
+     cat $TMP/$shortname >> $ADM_DIR/packages/$shortname
+   else
+     # Some dumb bunny built a package with something other than makepkg.  Bad!
+diff -burN usr/lib/setup.orig/INSURL usr/lib/setup/INSURL
+--- usr/lib/setup.orig/INSURL	2013-11-01 02:06:48.000000000 +0100
++++ usr/lib/setup/INSURL	2014-05-09 09:58:43.766164657 +0200
+@@ -63,7 +63,7 @@
+ 
+ Good! We're all set on the local end, but now we need to know
+ where to find the software packages to install. First, we need
+-the URL of the ftp or http server where the Slackware sources
++the URL of the ftp or http server where the  sources
+ are stored.
+ URL examples are: 'ftp://192.168.0.1' ; 'http://172.16.10.31'
+ 
+@@ -87,7 +87,7 @@
+ 
+  cat << EOF > $TMP/tempmsg
+ 
+- There must be a directory on the server with the Slackware
++ There must be a directory on the server with the 
+  packages and files arranged in a tree like the FTP site.
+ 
+  The installation script needs to know the name of the 
+@@ -95,7 +95,7 @@
+  subdirectories. For example, if your A series is found at 
+  /slack/slackware64/a, then you would respond: /slack/slackware64
+  
+- What is the Slackware source directory?
++ What is the  source directory?
+ EOF
+  dialog --title "SELECT SOURCE DIRECTORY" --inputbox "$(cat $TMP/tempmsg)" \
+  17 65 $REMOTE_PATH 2> $TMP/slacksrc
+@@ -112,12 +112,12 @@
+ 
+ First, we'll download the PACKAGES.TXT from the parent of the
+ directory that you entered before (which should be the root
+-of the remote Slackware tree).  If that succeeds, then we use
++of the remote  tree).  If that succeeds, then we use
+ PACKAGES.TXT to reconstruct a local cache of the package tree
+ (should take a minute or less on an average system).
+ After that, we're all set to go!
+ 
+-Downloading PACKAGES.TXT at the Slackware root starts
++Downloading PACKAGES.TXT at the  root starts
+ after you press OK.
+ That file is several hundreds of KB in size so it may
+ take some time to get here...
+@@ -148,7 +148,7 @@
+ 
+  if [ -r /var/log/mount/treecache/PACKAGES.TXT ]; then
+   if head /var/log/mount/treecache/PACKAGES.TXT | grep -q "PACKAGES.TXT" ; then
+-   echo "A Slackware 'PACKAGES.TXT' is available. Ready to continue!" >> $TMP/wgetout
++   echo "A  'PACKAGES.TXT' is available. Ready to continue!" >> $TMP/wgetout
+    DEFANSW="no"
+   fi
+  else
+@@ -224,7 +224,7 @@
+   esac
+  done \
+  ) |  dialog --title "INITIALIZING PACKAGE TREE" --gauge \
+-       "\nProcessing ${TOTALP} Slackware packages..." 8 65
++       "\nProcessing ${TOTALP}  packages..." 8 65
+  
+  # Make sure we can select stuff from the package series:
+  dialog --title "INITIALIZING PACKAGE TREE" --infobox \
+diff -burN usr/lib/setup.orig/INSUSB usr/lib/setup/INSUSB
+--- usr/lib/setup.orig/INSUSB	2013-11-01 02:06:48.000000000 +0100
++++ usr/lib/setup/INSUSB	2014-05-09 09:58:43.767164657 +0200
+@@ -9,7 +9,7 @@
+ rm -f $TMP/SeTmount $TMP/SeTDS $TMP/SeTCDdev $TMP/reply
+ 
+ dialog --title "SCANNING FOR USB STICK" --msgbox \
+-"Make sure the USB stick containing the Slackware package directory \
++"Make sure the USB stick containing the  package directory \
+ is inserted into a USB port, and then press ENTER to begin the scanning process." \
+ 7 66 \
+ 2> $TMP/reply
+@@ -45,7 +45,7 @@
+ 
+ # First, we will look for partitions on the USB stick.  Not knowing whether the stick is
+ # partitioned with MBR or GPT partitions (or indeed at all), we'll test for partitions
+-# 1 through 4.  Probably very few people will try to use a stick with the Slackware
++# 1 through 4.  Probably very few people will try to use a stick with the 
+ # packages in a directory on partition 5 or higher.  If they do, it won't work.  Sorry.
+ unset DRIVE_FOUND INSTALL_PATH
+ for DEVICE in $REMOVEABLE_DEVICES ; do
+@@ -84,7 +84,7 @@
+ 
+ if [ "$DRIVE_FOUND" = "" ]; then
+   dialog --title "NO SLACKWARE DIRECTORY FOUND" --msgbox \
+-"Sorry, but a Slackware directory could not be found on any USB devices. \
++"Sorry, but a  directory could not be found on any USB devices. \
+ Exiting back to the top menu." \
+ 6 55
+   rm -f $TMP/SeTDS $TMP/SeTmount $TMP/SeTCDdev $TMP/errordo
+@@ -94,7 +94,7 @@
+ # Success!  Report back to the console:
+ 
+ dialog --title "USB PACKAGE SOURCE FOUND" --sleep 3 --infobox \
+-"A Slackware package directory was found on device $DRIVE_FOUND." 3 66
++"A  package directory was found on device $DRIVE_FOUND." 3 66
+ 
+ # At this point, the stick has been found and is mounted on /usb-stick.
+ # All that remains is to tell the installer about it, and we're done here.
+diff -burN usr/lib/setup.orig/pkgtool usr/lib/setup/pkgtool
+--- usr/lib/setup.orig/pkgtool	2013-10-03 00:28:29.000000000 +0200
++++ usr/lib/setup/pkgtool	2014-05-09 09:58:43.772164657 +0200
+@@ -2,7 +2,7 @@
+ #
+ # Copyright 1993, 1994, 1995, 1996, 1997,
+ #    1998, 1999  Patrick Volkerding,  Moorhead, MN  USA
+-# Copyright 2001, 2004  Slackware Linux, Inc.,  Concord, CA  USA
++# Copyright 2001, 2004   Slackware, Inc.,  Concord, CA  USA
+ #    All rights reserved.
+ # Copyright 2007, 2009, 2010, 2011, 2013  Patrick Volkerding, Sebeka, MN, USA
+ #
+@@ -212,15 +212,15 @@
+  CMD_START="true"
+  rm -f $TMP/SeT*
+  while [ 0 ]; do
+-  dialog --title "Slackware Package Tool (pkgtool version 14.1)" \
+---menu "\nWelcome to the Slackware package tool.\n\
++  dialog --title " Package Tool (pkgtool version 14.1)" \
++--menu "\nWelcome to the  package tool.\n\
+ \nWhich option would you like?\n" 17 75 7 \
+ "Current" "Install packages from the current directory" \
+ "Other" "Install packages from some other directory" \
+ "Floppy" "Install packages from floppy disks" \
+ "Remove" "Remove packages that are currently installed" \
+ "View" "View the list of files contained in a package" \
+-"Setup" "Choose Slackware installation scripts to run again" \
++"Setup" "Choose  installation scripts to run again" \
+ "Exit" "Exit Pkgtool" 2> $TMP/reply
+   if [ ! $? = 0 ]; then
+    rm -f $TMP/reply
+@@ -407,7 +407,7 @@
+ Your source device cannot be accessed properly.
+ 
+ Please be sure that it is mounted on $SOURCE_DIR,
+-and that the Slackware disks are found in subdirectories 
++and that the  disks are found in subdirectories 
+ of $SOURCE_DIR like specified.
+ 
+ EOF
+@@ -615,7 +615,7 @@
+ 
+ that I don't recognize. Please be sure this package is
+ really supposed to be here, and is not left over from an
+-old version of Slackware. Sometimes this can happen at the 
++old version of . Sometimes this can happen at the 
+ archive sites.
+ 
+ EOF
+diff -burN usr/lib/setup.orig/PROMPThelp usr/lib/setup/PROMPThelp
+--- usr/lib/setup.orig/PROMPThelp	2013-08-06 03:46:16.000000000 +0200
++++ usr/lib/setup/PROMPThelp	2014-05-09 09:58:43.773164657 +0200
+@@ -39,7 +39,7 @@
+ so many packages now that the time added to the installation
+ is quite significant, and the chance of accidentally leaving
+ out an important package is high.  If you haven't installed
+-Slackware before, the best thing to do is make sure you have
++ before, the best thing to do is make sure you have
+ plenty of space and go for a "full" installation.
+ 
+ About the "tagfile" files:
+@@ -62,7 +62,7 @@
+ 
+ If you use tagfiles, you might want to use a custom 
+ tagfile that you have created yourself instead of the
+-default ones that come with Slackware (the ones named
++default ones that come with  (the ones named
+ 'tagfile'). For instance, I use custom tagfiles called
+ 'tagfile.pat' that you might see on your disks. :^) You
+ make a custom tagfile by copying the 'tagfile' on the
+diff -burN usr/lib/setup.orig/PXEhelp usr/lib/setup/PXEhelp
+--- usr/lib/setup.orig/PXEhelp	2013-11-01 02:06:48.000000000 +0100
++++ usr/lib/setup/PXEhelp	2014-05-09 09:58:43.774164657 +0200
+@@ -1,5 +1,5 @@
+ 
+-Slackware PXE Server Help
++ PXE Server Help
+ _________________________
+ 
+ First, a little help on help.  Whenever you encounter a text
+@@ -49,7 +49,7 @@
+ 
+ 
+ NETWORK   (configure the network device and optional DHCP server)
+-SOURCE    (select the source location for the Slackware Linux
++SOURCE    (select the source location for the  Linux
+            packages)
+ ACTIVATE  (start the PXE server)
+ 
+@@ -69,13 +69,13 @@
+ Press 'Accept' once you are satisfied.
+ 
+ In the SOURCE configuration stage, you determine where you have
+-your local Slackware copy.  This should be a complete directory
++your local  copy.  This should be a complete directory
+ tree including the packages, the kernels and the isolinux directory.
+ The package sources are not needed and can be omitted from the medium
+ if you are using a bootable USB stick for instance.  The choices
+ for SOURCE location are: a DVD medium, a local disk partition or
+ a pre-mounted directory.  These are the standard setup dialogs you
+-will certainly know from installing Slackware. Be sure to enter the
++will certainly know from installing . Be sure to enter the
+ full directory path to (and including) the directory which contains
+ the 'a', 'ap', 'd', ..., 'y' subdirectiries.  You know the drill.
+ 
+@@ -86,9 +86,9 @@
+ until you press 'Exit' which will drop you back into the main menu
+ after killing the PXE service.  Selecting ACTIVATE will restart the
+ PXE service.  Computers who boot from your PXE server will see the
+-usual Slackware installation routine.  When it comes to selecting the
++usual  installation routine.  When it comes to selecting the
+ SOURCE, these computers have one choice, and is the entry "Install
+-from FTP/HTTP server".  The PXE server offers Slackware packages to
++from FTP/HTTP server".  The PXE server offers  packages to
+ willing computers using its own internal HTTP server.  The default
+ values that you will see for the URL and the PATH input fields are
+ being supplied by the PXE server and should not be changed.
+@@ -97,7 +97,7 @@
+ ...WHEN YOU'RE DONE:
+ 
+ 
+-EXIT: This leaves Slackware PXE Server setup.
++EXIT: This leaves  PXE Server setup.
+ 
+ 
+ Have fun running this PXE server!
+diff -burN usr/lib/setup.orig/pxesetup usr/lib/setup/pxesetup
+--- usr/lib/setup.orig/pxesetup	2013-11-01 02:06:48.000000000 +0100
++++ usr/lib/setup/pxesetup	2014-05-09 09:58:43.776164657 +0200
+@@ -37,7 +37,7 @@
+ export PATH;
+ export COLOR=on
+ # Before probing, activate any LVM partitions that may exist from
+-# before the boot - perhaps the Slackware tree is on a local partition:
++# before the boot - perhaps the  tree is on a local partition:
+ vgchange -ay 1> /dev/null 2> /dev/null
+ if probe -l 2> /dev/null | grep -E 'Linux$' 1> /dev/null 2> /dev/null ; then
+  probe -l 2> /dev/null | grep -E 'Linux$' | sort 1> $TMP/SeTplist 2> /dev/null
+@@ -45,16 +45,16 @@
+ 
+ while [ 0 ]; do
+ 
+- dialog --title "Slackware PXE Setup (version 13.37)" \
++ dialog --title " PXE Setup (version 13.37)" \
+ --menu \
+-"Welcome to Slackware PXE Setup.\n\
++"Welcome to  PXE Setup.\n\
+ Select an option below using the UP/DOWN keys and SPACE or ENTER.\n\
+ Alternate keys may also be used: '+', '-', and TAB." 18 72 9 \
+-"HELP" "Read the Slackware PXE Setup HELP file" \
++"HELP" "Read the  PXE Setup HELP file" \
+ "NETWORK" "Configure your network parameters" \
+ "SOURCE" "Select source media" \
+-"ACTIVATE" "Activate the Slackware PXE Server" \
+-"EXIT" "Exit Slackware PXE Setup" 2> $TMP/hdset
++"ACTIVATE" "Activate the  PXE Server" \
++"EXIT" "Exit  PXE Setup" 2> $TMP/hdset
+  if [ ! $? = 0 ]; then
+   rm -f $TMP/hdset $TMP/SeT*
+   exit
+@@ -100,7 +100,7 @@
+   dnsmasq -C /etc/dnsmasq.conf
+   httpd -h /var/log/mount
+ 
+-  dialog --backtitle "Slackware PXE Server." \
++  dialog --backtitle " PXE Server." \
+    --title "PXE Client activity log" \
+    --ok-label "EXIT" \
+    --tailbox /var/log/dnsmasq.log 18 68
+diff -burN usr/lib/setup.orig/removepkg usr/lib/setup/removepkg
+--- usr/lib/setup.orig/removepkg	2009-04-28 22:44:26.000000000 +0200
++++ usr/lib/setup/removepkg	2014-05-09 09:58:43.778164657 +0200
+@@ -1,5 +1,5 @@
+ #!/bin/sh
+-# Slackware remove package script
++#  remove package script
+ #
+ # Sat Apr 25 21:18:53 UTC 2009 (12.34567890b)
+ # Converted to use new pkgbase() function to remove pathname and
+@@ -17,7 +17,7 @@
+ # - Don't try to remove any package that starts with '-'.  This
+ #   is not a proper package name (usually a typo), and results
+ #   in the package database being broken.  Thanks to Jef Oliver.
+-# - Patched cat_except() to allow the last Slackware package on
++# - Patched cat_except() to allow the last  package on
+ #   a partition to be removed (using ROOT=, of course)
+ #   Thanks to Selkfoster for the patch, and to everyone else who
+ #   proposed solutions before.  This issue really wasn't given
+@@ -64,14 +64,14 @@
+ # Delete empty directories & formated manual pages added
+ #
+ # Revision 1.1.1.1  1995/12/18 21:20:42  volkerding
+-# Original Version from Slackware 3.1
++# Original Version from  3.1
+ #
+ # Revision 1.1  1995/06/05 22:49:11  volkerding
+-# Original Version from Slackware 3.0
++# Original Version from  3.0
+ #
+ 
+ # Copyright 1994, 1995, 1998  Patrick Volkerding, Moorhead, Minnesota USA
+-# Copyright 2001, Slackware Linux, Inc., Concord, CA USA
++# Copyright 2001,  Slackware, Inc., Concord, CA USA
+ # Copyright 2009  Patrick J. Volkerding, Sebeka, MN, USA
+ # All rights reserved.
+ #
+diff -burN usr/lib/setup.orig/SeTDOS usr/lib/setup/SeTDOS
+--- usr/lib/setup.orig/SeTDOS	2013-10-28 00:26:11.000000000 +0100
++++ usr/lib/setup/SeTDOS	2014-05-09 09:58:43.780164657 +0200
+@@ -1,7 +1,7 @@
+ #!/bin/sh
+ # SeTpartition user-friendly rewrite Fri Dec 15 13:17:40 CST 1995 pjv
+-# More updates for Slackware 3.5: Wed Apr 29 22:43:28 CDT 1998
+-# Updated for Slackware 7.x (new fdisk tags) Fri Sep 10 13:17:18 CDT 1999
++# More updates for  3.5: Wed Apr 29 22:43:28 CDT 1998
++# Updated for  7.x (new fdisk tags) Fri Sep 10 13:17:18 CDT 1999
+ TMP=/var/log/setup/tmp
+ if [ ! -d $TMP ]; then
+   mkdir -p $TMP
+diff -burN usr/lib/setup.orig/SeTfdHELP usr/lib/setup/SeTfdHELP
+--- usr/lib/setup.orig/SeTfdHELP	2009-06-16 00:59:43.000000000 +0200
++++ usr/lib/setup/SeTfdHELP	2014-05-09 09:58:43.782164657 +0200
+@@ -1,2 +1,2 @@
+ #!/bin/sh
+-dialog --title "Slackware Setup Help" --exit-label OK --textbox "/usr/lib/setup/FDhelp" 22 77
++dialog --title " Setup Help" --exit-label OK --textbox "/usr/lib/setup/FDhelp" 22 77
+diff -burN usr/lib/setup.orig/SeTkernel usr/lib/setup/SeTkernel
+--- usr/lib/setup.orig/SeTkernel	2013-11-01 02:06:48.000000000 +0100
++++ usr/lib/setup/SeTkernel	2014-05-09 09:58:43.784164657 +0200
+@@ -24,7 +24,7 @@
+   umount $CDDEVICE 1> /dev/null 2> /dev/null
+   eject -s $CDDEVICE
+   dialog --title "REINSERT KERNEL DISC" --msgbox \
+-"Please reinsert the Slackware disc containing the collection \
++"Please reinsert the  disc containing the collection \
+ of Linux kernels.  Usually this is disc number one (the disc \
+ that you boot from).  Once you've inserted the disc, hit ENTER \
+ to continue." \
+diff -burN usr/lib/setup.orig/SeTmaketag usr/lib/setup/SeTmaketag
+--- usr/lib/setup.orig/SeTmaketag	2009-06-16 00:59:43.000000000 +0200
++++ usr/lib/setup/SeTmaketag	2014-05-09 09:58:43.787164657 +0200
+@@ -9,7 +9,7 @@
+ found on the first disk of a series that can determine which packages are \
+ installed and which are skipped.  Deciding which files to install in advance \
+ can speed up the installation process greatly.  If you have not installed \
+-Slackware Linux before, you should probably try installing using the \
++ Linux before, you should probably try installing using the \
+ default tagfiles before you try making custom ones, because you won't see much \
+ information about the package contents when creating your tagfiles.  This \
+ process assumes you already know which packages you want to install.  \
+@@ -89,7 +89,7 @@
+   else # no tagfile create script!
+    dialog --title "NO TAGFILE SCRIPT" --msgbox "Sorry, but a custom tagfile \
+ cannot be created for this disk because it does not have a 'maketag' script.  \
+-The maketag script was introduced in Slackware 1.1.2, and provides the menu \
++The maketag script was introduced in  1.1.2, and provides the menu \
+ of packages to select from.  Currently there is no way to just look at the \
+ disks and 'wing it', but maybe there will be eventually.  You'll have to edit \
+ the tagfile on this disk manually." 11 65
+@@ -127,7 +127,7 @@
+    dialog --title "NO TAGFILE SCRIPT" --msgbox "Sorry, but a custom tagfile \
+ cannot be created for this disk series because the directory you gave does \
+ not have a 'maketag' script.  \
+-The maketag script was introduced in Slackware 1.1.2, and provides the menu \
++The maketag script was introduced in  1.1.2, and provides the menu \
+ of packages to select from.  Currently there is no way to just look at the \
+ packages and 'wing it', but maybe there will be eventually.  You'll have to \
+ edit the tagfile in this directory manually." 11 65
+diff -burN usr/lib/setup.orig/SeTmedia usr/lib/setup/SeTmedia
+--- usr/lib/setup.orig/SeTmedia	2013-10-28 00:25:11.000000000 +0100
++++ usr/lib/setup/SeTmedia	2014-05-09 09:59:45.919164605 +0200
+@@ -4,16 +4,13 @@
+   mkdir -p $TMP
+ fi
+ 
+-dialog --backtitle "Select Slackware installation source." \
++dialog --backtitle "Select  installation source." \
+ --title "SOURCE MEDIA SELECTION" --menu \
+-"Please select the media from which to install Slackware Linux:" \
++"Please select the media from which to install  Linux:" \
+ 14 70 7 \
+-"1" "Install from a Slackware CD or DVD" \
+-"2" "Install from a Slackware USB stick" \
++"1" "Install from a  CD or DVD" \
++"2" "Install from a  USB stick" \
+ "3" "Install from a hard drive partition" \
+-"4" "Install from NFS (Network File System)" \
+-"5" "Install from FTP/HTTP server" \
+-"6" "Install from Samba share" \
+ "7" "Install from a pre-mounted directory" \
+ 2> $TMP/media
+ if [ ! $? = 0 ]; then
+diff -burN usr/lib/setup.orig/SeTmedia.orig usr/lib/setup/SeTmedia.orig
+--- usr/lib/setup.orig/SeTmedia.orig	1970-01-01 01:00:00.000000000 +0100
++++ usr/lib/setup/SeTmedia.orig	2014-05-09 09:58:43.788164657 +0200
+@@ -0,0 +1,47 @@
++#!/bin/sh
++TMP=/var/log/setup/tmp
++if [ ! -d $TMP ]; then
++  mkdir -p $TMP
++fi
++
++dialog --backtitle "Select  installation source." \
++--title "SOURCE MEDIA SELECTION" --menu \
++"Please select the media from which to install  Linux:" \
++14 70 7 \
++"1" "Install from a  CD or DVD" \
++"2" "Install from a  USB stick" \
++"3" "Install from a hard drive partition" \
++"4" "Install from NFS (Network File System)" \
++"5" "Install from FTP/HTTP server" \
++"6" "Install from Samba share" \
++"7" "Install from a pre-mounted directory" \
++2> $TMP/media
++if [ ! $? = 0 ]; then
++ rm $TMP/media
++ exit
++fi
++
++SOURCE_MEDIA="`cat $TMP/media`"
++rm -f $TMP/media
++if [ "$SOURCE_MEDIA" = "1" ]; then
++ INSCD
++elif [ "$SOURCE_MEDIA" = "2" ]; then
++ INSUSB
++elif [ "$SOURCE_MEDIA" = "3" ]; then
++ INShd
++elif [ "$SOURCE_MEDIA" = "4" ]; then
++ SeTnet
++ INSNFS
++elif [ "$SOURCE_MEDIA" = "5" ]; then
++ SeTnet
++ INSURL 
++elif [ "$SOURCE_MEDIA" = "6" ]; then
++ SeTnet
++ INSSMB 
++elif [ "$SOURCE_MEDIA" = "7" ]; then
++ INSdir
++fi
++
++# Sorry, this goes the way of the dinosaur...
++#"5" "Install from floppy disks (A and N series only)" 
++
+diff -burN usr/lib/setup.orig/SeTpxe usr/lib/setup/SeTpxe
+--- usr/lib/setup.orig/SeTpxe	2013-11-01 02:06:48.000000000 +0100
++++ usr/lib/setup/SeTpxe	2014-05-09 09:58:43.797164657 +0200
+@@ -118,7 +118,7 @@
+ fi
+ 
+ # Start the interactive part:
+-dialog --backtitle "Slackware PXE Server." \
++dialog --backtitle " PXE Server." \
+  --title "WELCOME TO PXE CONFIGURATION" --msgbox "\
+ We will be asking you a few questions now.\n\
+ The answers will be used to start a PXE service on this computer \
+@@ -133,7 +133,7 @@
+  # Be extra safe. Do not start a DHCP server if the user denies it:
+  dialog --title "ENABLE DHCP SERVER" --yesno " \
+ No active DHCP server was found on your local network. \
+-The Slackware PXE server needs a working DHCP server.\n\
++The  PXE server needs a working DHCP server.\n\
+ Do you want this computer to start its own DHCP server \
+ (you can control what IP addresses are used by the DHCP server)?\n\
+ Say 'YES' if you are certain your network has no DHCP server." 9 68
+@@ -173,7 +173,7 @@
+  MAXLEASE_IP=$(int_to_ip "$I_MAXLEASE_IP")
+ 
+  while [ 0 ]; do
+-  ( dialog --stdout --backtitle "Slackware PXE Server." \
++  ( dialog --stdout --backtitle " PXE Server." \
+      --title "DHCP SERVER CONFIGURATION" \
+      --cancel-label Restart \
+      --form "\
+diff -burN usr/lib/setup.orig/SeTPXEHELP usr/lib/setup/SeTPXEHELP
+--- usr/lib/setup.orig/SeTPXEHELP	2011-04-14 00:22:18.000000000 +0200
++++ usr/lib/setup/SeTPXEHELP	2014-05-09 09:58:43.798164657 +0200
+@@ -1,2 +1,2 @@
+ #!/bin/sh
+-dialog --title "Slackware PXE Server Help" --exit-label OK --textbox "/usr/lib/setup/PXEhelp" 22 77
++dialog --title " PXE Server Help" --exit-label OK --textbox "/usr/lib/setup/PXEhelp" 22 77
+diff -burN usr/lib/setup.orig/SeTpxemedia usr/lib/setup/SeTpxemedia
+--- usr/lib/setup.orig/SeTpxemedia	2013-11-01 02:06:48.000000000 +0100
++++ usr/lib/setup/SeTpxemedia	2014-05-09 09:58:43.799164657 +0200
+@@ -28,11 +28,11 @@
+   mkdir -p $TMP
+ fi
+ 
+-dialog --backtitle "Select Slackware installation source." \
++dialog --backtitle "Select  installation source." \
+ --title "SOURCE MEDIA SELECTION" --menu \
+-"Please select the media which contains Slackware Linux:" \
++"Please select the media which contains  Linux:" \
+ 13 70 6 \
+-"1" "Use a Slackware DVD" \
++"1" "Use a  DVD" \
+ "2" "Use a hard drive partition" \
+ "3" "Use a pre-mounted directory" \
+ 2> $TMP/pxemedia
+diff -burN usr/lib/setup.orig/SeTswap usr/lib/setup/SeTswap
+--- usr/lib/setup.orig/SeTswap	2009-06-16 00:59:43.000000000 +0200
++++ usr/lib/setup/SeTswap	2014-05-09 09:58:43.800164657 +0200
+@@ -38,7 +38,7 @@
+  cat << EOF > $TMP/tmpscript
+ dialog --backtitle "Setting up swap partitions." \\
+ --title "SWAP SPACE DETECTED" --checklist \\
+-"Slackware Setup has detected one or more swap partitions \\
++" Setup has detected one or more swap partitions \\
+ on your system.  These partitions have been \\
+ preselected to be set up as swap space.  If there are any \\
+ swap partitions that you \\
+@@ -78,7 +78,7 @@
+  if [ ! -r $TMP/SeTswapskip ]; then
+   dialog --backtitle "Setting up swap partitions." \
+  --title "CHECK SWAP PARTITIONS FOR BAD BLOCKS?" --defaultno --yesno \
+-"Slackware Setup will now prepare your system's swap space.  \
++" Setup will now prepare your system's swap space.  \
+ When formatting swap partitions with mkswap you may also check \
+ them for bad blocks.  This is not the default since nearly all \
+ modern hard drives check themselves for bad blocks anyway.  \
+diff -burN usr/lib/setup.orig/setup usr/lib/setup/setup
+--- usr/lib/setup.orig/setup	2013-11-01 02:06:48.000000000 +0100
++++ usr/lib/setup/setup	2014-05-09 13:12:43.338155323 +0200
+@@ -1,7 +1,7 @@
+ #!/bin/sh
+ #
+ # Copyright 1993,1994,1999  Patrick Volkerding, Moorhead, Minnesota USA
+-# Copyright 2001, 2003, 2004  Slackware Linux, Inc., Concord, CA
++# Copyright 2001, 2003, 2004   Slackware, Inc., Concord, CA
+ # Copyright 2006, 2007  Patrick Volkerding, Sebeka, Minnesota USA
+ # All rights reserved.
+ #
+@@ -94,12 +94,12 @@
+ 
+ while [ 0 ]; do
+ 
+- dialog --title "Slackware Linux Setup (version 14.1)" \
++ dialog --title "Linux Setup" \
+ --menu \
+-"Welcome to Slackware Linux Setup.\n\
++"Welcome to  Linux Setup.\n\
+ Select an option below using the UP/DOWN keys and SPACE or ENTER.\n\
+ Alternate keys may also be used: '+', '-', and TAB." 18 72 9 \
+-"HELP" "Read the Slackware Setup HELP file" \
++"HELP" "Read the  Setup HELP file" \
+ "KEYMAP" "Remap your keyboard if you're not using a US one" \
+ "ADDSWAP" "Set up your swap partition(s)" \
+ "TARGET" "Set up your target partitions" \
+@@ -107,7 +107,7 @@
+ "SELECT" "Select categories of software to install" \
+ "INSTALL" "Install selected software" \
+ "CONFIGURE" "Reconfigure your Linux system" \
+-"EXIT" "Exit Slackware Linux Setup" 2> $TMP/hdset
++"EXIT" "Exit  Linux Setup" 2> $TMP/hdset
+  if [ ! $? = 0 ]; then
+   rm -f $TMP/hdset $TMP/SeT*
+   exit
+@@ -200,13 +200,8 @@
+ using 'expert' or 'menu' mode.  Which type of prompting would you like \
+ to use?" \
+    20 76 7 \
+-   "full" "Install everything (7.8+ GB of software, RECOMMENDED!)" \
+-   "terse" "Like 'full', but display one line per package during install" \
++   "full" "Install everything (RECOMMENDED!)" \
+    "menu" "Choose individual packages from interactive menus" \
+-   "expert" "This is actually the same as the \"menu\" option" \
+-   "newbie" "Use verbose prompting (the X series takes one year)" \
+-   "custom" "Use custom tagfiles in the package directories" \
+-   "tagpath" "Use tagfiles in the subdirectories of a custom path" \
+    "help" "Read the prompt mode help file" 2> $TMP/SeTpmode
+    if [ ! $? = 0 ]; then
+     rm -f $TMP/SeTpmode
+@@ -319,6 +314,14 @@
+  fi
+ 
+  if [ "$MAINSELECT" = "CONFIGURE" ]; then
++  if [ -f /install-pkgsrc.sh ]; then
++    cp /install-pkgsrc.sh /mnt/root/
++    chmod +x /mnt/root/install-pkgsrc.sh
++  fi
++  if [ -f /pkgsrc-profile.sh ]; then
++    cp /pkgsrc-profile.sh /mnt/etc/profile.d/
++    chmod +x /mnt/etc/profile.d/pkgsrc-profile.sh
++  fi
+   SeTconfig
+   REPLACE_FSTAB=Y
+   if [ -r $TMP/SeTnative ]; then
+@@ -387,7 +390,7 @@
+ 
+ if [ -f /mnt/etc/fstab ]; then
+   echo
+-  echo "Installation of Slackware Linux is complete."
++  echo "Installation of  Linux is complete."
+   echo
+   # umount CD:
+   if [ -r $TMP/SeTCDdev ]; then
+diff -burN usr/lib/setup.orig/slackinstall usr/lib/setup/slackinstall
+--- usr/lib/setup.orig/slackinstall	2013-11-01 02:06:48.000000000 +0100
++++ usr/lib/setup/slackinstall	2014-05-09 09:58:43.805164657 +0200
+@@ -1,5 +1,5 @@
+ #!/bin/sh
+-# Copyright 2003  Slackware Linux, Inc.,  Concord, CA  USA
++# Copyright 2003   Slackware, Inc.,  Concord, CA  USA
+ # Copyright 2009  Patrick J. Volkerding, Sebeka, MN, USA
+ #    All rights reserved.
+ #
+@@ -164,7 +164,7 @@
+ remount_disc() {
+   umount $DEVICE 2> /dev/null
+   eject -s $DEVICE 2> /dev/null
+-  dialog --title "INSERT NEXT DISC" --menu "Please insert the next Slackware disc and \
++  dialog --title "INSERT NEXT DISC" --menu "Please insert the next  disc and \
+ press ENTER to continue installing packages." \
+ 10 62 2 \
+   "Continue" "Install packages from the next disc" \

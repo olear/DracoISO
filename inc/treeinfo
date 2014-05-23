@@ -1,0 +1,12 @@
+[general]
+family = DracoLinux
+timestamp = 2014.1
+variant = 
+totaldiscs = 1
+version = 1.0
+discnum = 1
+packagedir = 
+arch = x86_64
+
+[stage2]
+mainimage = images/install.img

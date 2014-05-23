@@ -1,0 +1,4 @@
+ftp://ftp.slackware.no/centos/6.5/os/x86_64/isolinux/|initrd.img
+ftp://ftp.slackware.no/centos/6.5/os/x86_64/isolinux/|memtest
+ftp://ftp.slackware.no/centos/6.5/os/x86_64/images/|install.img
+ftp://ftp.slackware.no/centos/6.5/os/x86_64/isolinux/|vmlinuz

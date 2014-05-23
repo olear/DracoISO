@@ -1,0 +1,14 @@
+atk-1.30.0-1.el6.x86_64.rpm
+avahi-libs-0.6.25-12.el6.x86_64.rpm
+cairo-1.8.8-3.1.el6.x86_64.rpm
+gnome-icon-theme-2.28.0-2.el6.noarch.rpm
+gnutls-2.8.5-13.el6_5.x86_64.rpm
+gtk2-2.20.1-4.el6.x86_64.rpm
+gtk2-engines-2.18.4-5.el6.centos.x86_64.rpm
+libglade2-2.6.4-3.1.el6.x86_64.rpm
+libthai-0.1.12-3.el6.x86_64.rpm
+pango-1.28.1-7.el6_3.x86_64.rpm
+pycairo-1.8.6-2.1.el6.x86_64.rpm
+pygobject2-2.20.0-5.el6.x86_64.rpm
+pygtk2-2.16.0-3.el6.x86_64.rpm
+pygtk2-libglade-2.16.0-3.el6.x86_64.rpm

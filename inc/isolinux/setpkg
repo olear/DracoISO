@@ -1,0 +1,35 @@
+#!/bin/sh
+# This script is used within the Slackware installer to present
+# a package series selection menu.  If not present, a default list
+# built into the installer is used.
+
+# Protected tmp directory:
+TMP=/var/log/setup/tmp
+if [ ! -d $TMP ]; then
+  mkdir -p $TMP
+fi
+
+rm -f $TMP/SeTSERIES
+dialog --backtitle "Selecting software to install." --title "PACKAGE SERIES SELECTION" --item-help --output-separator "#" --checklist \
+"Now it's time to select which general categories of software to install \
+on your system.  Use the spacebar to select or unselect the software you \
+wish to install.  You can use the up and down arrows to see all the \
+possible choices.  Recommended choices have been preselected.  Press the \
+ENTER key when you are finished." \
+20 75 9 \
+"A" "Base Linux system" on "The A (base) series contains the kernel and main system utilities." \
+2> $TMP/SeTSERIES
+if [ ! $? = 0 ]; then
+  rm -f $TMP/SeTSERIES
+  exit
+fi
+# Save this "just in case":
+#"GNOME" "The GNOME desktop for X" on "The GNOME series contains the GNOME desktop environment and related libraries." 
+#
+# Rewrite the list into a single # delimited line:
+INSTSETS="`cat $TMP/SeTSERIES | tr -d " "`"
+INSTSETS="`echo $INSTSETS | tr "\042" "#" `"
+INSTSETS="`echo $INSTSETS | tr "," "#" `"
+INSTSETS="`echo $INSTSETS | tr -s "#" `"
+# Store the selection list:
+echo "$INSTSETS" > $TMP/SeTSERIES
