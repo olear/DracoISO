@@ -23,7 +23,7 @@
 B=$(sed -n '1'p inc/version)
 N=$(sed -n '2'p inc/version)
 V=$(sed -n '3'p inc/version)
-ID=preview
+ID=preview2
 
 if [ $UID -gt 0 ]; then
   echo "Run as root!"
@@ -32,10 +32,6 @@ fi
 
 rm -rf iso tmp
 mkdir -p tmp iso/isolinux iso/images iso/centos iso/slackware64/a || exit 1
-
-if [ ! -d releases ]; then
-  mkdir releases
-fi
 
 if [ ! -d images ]; then
   mkdir images
@@ -152,5 +148,5 @@ mkisofs -o ../$N-$ID-$V-$B.iso -b isolinux/isolinux.bin -c boot.cat -no-emul-boo
 cd .. || exit 1
 md5sum $N-$ID-$V-$B.iso > $N-$ID-$V-$B.iso.MD5 || exit 1
 sha1sum $N-$ID-$V-$B.iso > $N-$ID-$V-$B.iso.SHA1 || exit 1
-su -c "mv $N-$ID-$V-$B.* releases/ && rm -rf iso tmp" || exit 1
+rm -rf iso tmp || exit 1
 
