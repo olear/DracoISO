@@ -83,7 +83,6 @@ if [ "$1" = "download" ]; then
   exit 0
 fi
 
-
 cd tmp || exit 1
 mkdir lilo || exit 1
 cd lilo || exit 1
@@ -96,8 +95,6 @@ cp -av inc/isolinux iso/ || exit 1
 cp -v sources/*.rpm iso/centos/ || exit 1
 cp -v sources/*.t*z iso/slackware64/a || exit 1
 cat SOURCE > iso/SOURCES || exit 1
-#cat pkgsrc.txt > iso/PKGSRC || exit 1
-#cat README > iso/README || exit 1
 cat EULA > iso/EULA || exit 1
 cat GPL > iso/GPL || exit 1
 cat inc/comps.xml > iso/comps.xml || exit 1
@@ -120,7 +117,6 @@ mkdir slack
 cd slack || exit 1
 zcat ../../images/diy.img | cpio -ivdum || exit 1
 patch -p0 < ../../inc/slack.diff || exit 1
-#cp ../../inc/liloconfig . || exit 1
 cat ../../inc/install-pkgsrc.sh > install-pkgsrc.sh || exit 1
 cat ../../inc/pkgsrc-profile.sh > pkgsrc-profile.sh || exit 1
 find . | cpio -co | gzip > ../../iso/isolinux/diy.img || exit 1
@@ -134,11 +130,6 @@ cat ../../inc/install/kickstart.py > usr/lib/anaconda/kickstart.py || exit 1
 mksquashfs . ../../iso/images/install.img || exit 1
 cd .. || exit 1
 
-mkdir build-scripts || exit 1
-cp -av ../inc ../build.sh ../GPL ../EULA ../SOURCE build-scripts/ || exit 1
-tar cvvJf build-scripts.tar.xz build-scripts || exit 1
-mv build-scripts.tar.xz ../iso/ || exit 1
-
 cd ../iso || exit 1
 cd slackware64/a || exit 1
 sh ../../../inc/mktag.sh || exit 1
@@ -146,7 +137,7 @@ cd ../../ || exit 1
 createrepo -g comps.xml . || exit 1
 mkisofs -o ../$N-$ID-$V-$B.iso -b isolinux/isolinux.bin -c boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -R -J -v -T . || exit 1
 cd .. || exit 1
-md5sum $N-$ID-$V-$B.iso > $N-$ID-$V-$B.iso.MD5 || exit 1
-sha1sum $N-$ID-$V-$B.iso > $N-$ID-$V-$B.iso.SHA1 || exit 1
+md5sum $N-$ID-$V-$B.iso > $N-$ID-$V-$B.iso.md5 || exit 1
+sha1sum $N-$ID-$V-$B.iso > $N-$ID-$V-$B.iso.sha1 || exit 1
 rm -rf iso tmp || exit 1
 

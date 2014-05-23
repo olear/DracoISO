@@ -1,4 +1,4 @@
-draco-base-1.0-2.draco1.noarch.rpm
+draco-base-1.0-3.draco1.noarch.rpm
 draco-desktop-1.0-9.draco1.noarch.rpm
 draco-firstboot-0.1-2.draco1.x86_64.rpm
 DracoPKG-20140508-1.draco1.x86_64.rpm
@@ -18,6 +18,7 @@ tnftp-20100108-1.draco1.x86_64.rpm
 wicd-1.7.0-5.draco1.x86_64.rpm
 wicd-common-1.7.0-5.draco1.noarch.rpm
 wicd-gtk-1.7.0-5.draco1.noarch.rpm
-draco-release-1.0-1.draco1.noarch.rpm
+draco-release-1.0-2.draco1.noarch.rpm
 draco-repo-1.0-1.draco1.noarch.rpm
 powertray-20140523.2-1.draco1.x86_64.rpm
+p7zip-9.20.1-8.1.1.x86_64.rpm
