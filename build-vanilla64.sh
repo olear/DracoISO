@@ -20,7 +20,7 @@
 # OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-ID=$(date +%Y%m%d)-x86_64
+ID=$(date +%Y%m%d)
 
 if [ $UID -gt 0 ]; then
   echo "Run as root!"
@@ -30,8 +30,8 @@ fi
 rm -rf iso64 tmp64
 mkdir -p tmp64 iso64/isolinux iso64/linux64/a || exit 1
 
-if [ ! -d images ]; then
-  mkdir images
+if [ ! -d images64 ]; then
+  mkdir images64
 fi
 
 if [ ! -d sources/slack64 ]; then
@@ -49,12 +49,12 @@ for i in $(cat inc/SOURCES-slack64);do
   fi
 done
 
-if [ ! -f images/linux64.img ]; then
-  wget ftp://ftp.slackware.no/slackware/slackware64-14.1/isolinux/initrd.img -O images/linux64.img || exit 1
+if [ ! -f images64/linux64.img ]; then
+  wget ftp://ftp.slackware.no/slackware/slackware64-14.1/isolinux/initrd.img -O images64/linux64.img || exit 1
 fi
 
-if [ ! -f images/bzImage64 ]; then
-  wget  ftp://ftp.slackware.no/slackware/slackware64-14.1/kernels/huge.s/bzImage -O images/bzImage64 || exit 1
+if [ ! -f images64/bzImage64 ]; then
+  wget  ftp://ftp.slackware.no/slackware/slackware64-14.1/kernels/huge.s/bzImage -O images64/bzImage64 || exit 1
 fi
 
 if [ "$1" = "download" ]; then
@@ -66,22 +66,22 @@ mkdir lilo || exit 1
 cd lilo || exit 1
 tar xvJf ../../sources/slack64/lilo-24.0-x86_64-4.txz || exit 1
 cat ../../inc/liloconfig > sbin/liloconfig || exit 1
-sh ../../inc/makepkg -l y -c n ../../sources/lilo-24.0-x86_64-4.txz || exit 1
+sh ../../inc/makepkg -l y -c n ../../sources/slack64/lilo-24.0-x86_64-4.txz || exit 1
 cd ../../ || exit 1
 
 cp -av inc/isolinux iso64/ || exit 1
 cat inc/isolinux.slack > iso64/isolinux/isolinux.cfg || exit 1
 cp -v sources/slack64/*.t*z iso64/linux64/a || exit 1
-cp images/bzImage64 iso64/isolinux/bzImage || exit 1
+cp images64/bzImage64 iso64/isolinux/bzImage || exit 1
 cat SOURCE > iso64/SOURCES || exit 1
 cat EULA > iso64/EULA || exit 1
 cat GPL > iso64/GPL || exit 1
 rm iso64/isolinux/*grub*
 
 cd tmp64 || exit 
-mkdir slack64-initrd || exit 1
-cd slack64-initrd || exit 1
-zcat ../../images/slack64.img | cpio -ivdum || exit 1
+mkdir initrd || exit 1
+cd initrd || exit 1
+zcat ../../images64/linux64.img | cpio -ivdum || exit 1
 patch -p0 < ../../inc/slack.diff || exit 1
 patch -p0 < ../../inc/slack64-ins.diff || exit 1
 cat ../../inc/install-pkgsrc.sh > install-pkgsrc.sh || exit 1
@@ -93,9 +93,9 @@ cd ../iso64 || exit 1
 cd linux64/a || exit 1
 sh ../../../inc/mktag.sh || exit 1
 cd ../../ || exit 1
-mkisofs -o ../pkgsrc-linux-$ID.iso -b isolinux/isolinux.bin -c boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -R -J -v -T . || exit 1
+mkisofs -o ../pkgsrc-linux64-$ID.iso -b isolinux/isolinux.bin -c boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -R -J -v -T . || exit 1
 cd .. || exit 1
-md5sum pkgsrc-linux-$ID.iso > pkgsrc-linux-$ID.iso.md5 || exit 1
-sha1sum pkgsrc-linux-$ID.iso > pkgsrc-linux-$ID.iso.sha1 || exit 1
+md5sum pkgsrc-linux64-$ID.iso > pkgsrc-linux64-$ID.iso.md5 || exit 1
+sha1sum pkgsrc-linux64-$ID.iso > pkgsrc-linux64-$ID.iso.sha1 || exit 1
 rm -rf iso64 tmp64 || exit 1
-mv pkgsrc-linux-$ID* releases/
+mv pkgsrc-linux64-$ID* releases/

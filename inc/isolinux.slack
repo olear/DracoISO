@@ -31,8 +31,4 @@ label linux
   menu label Install or rescue Linux system
   kernel bzImage
   append initrd=linux.img load_ramdisk=1 prompt_ramdisk=0 rw printk.time=0 nomodeset SLACK_KERNEL=huge.s
-label memtest86
-  menu label Memory test
-  kernel memtest
-  append -
 
