@@ -23,7 +23,8 @@
 B=$(sed -n '1'p inc/version)
 N=$(sed -n '2'p inc/version)
 V=$(sed -n '3'p inc/version)
-ID=preview2
+DATE=$(date +%Y%m%d)
+ID=preview-$DATE
 
 if [ $UID -gt 0 ]; then
   echo "Run as root!"

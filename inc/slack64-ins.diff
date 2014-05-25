@@ -1,0 +1,217 @@
+diff -burN usr.orig/lib/setup/INSCD usr/lib/setup/INSCD
+--- usr.orig/lib/setup/INSCD	2014-05-25 22:55:16.949098220 +0200
++++ usr/lib/setup/INSCD	2014-05-25 22:46:36.967634607 +0200
+@@ -264,7 +264,7 @@
+ ( cd $T_PX/dev ; ln -sf $DRIVE_FOUND cdrom )
+ 
+ # Pass information about the source directory to the next install stage:
+-echo "/var/log/mount/slackware64" > $TMP/SeTDS
++echo "/var/log/mount/linux64" > $TMP/SeTDS
+ echo "-source_mounted" > $TMP/SeTmount
+ echo "$DRIVE_FOUND" > $TMP/SeTCDdev
+ echo "/dev/null" > $TMP/SeTsource
+diff -burN usr.orig/lib/setup/INSdir usr/lib/setup/INSdir
+--- usr.orig/lib/setup/INSdir	2014-05-25 22:55:16.949098220 +0200
++++ usr/lib/setup/INSdir	2014-05-25 22:47:04.562287731 +0200
+@@ -46,7 +46,7 @@
+ mkdir -p /var/log/mount
+ # First, check if a  ISO image is present in $SOURCEDIR
+ if check_iso_image $SOURCEDIR ; then
+- echo "/var/log/mount/slackware64" > $TMP/SeTDS
++ echo "/var/log/mount/linux64" > $TMP/SeTDS
+ else
+  rm -f /var/log/mount 2> /dev/null
+  rmdir /var/log/mount 2> /dev/null
+diff -burN usr.orig/lib/setup/INShd usr/lib/setup/INShd
+--- usr.orig/lib/setup/INShd	2014-05-25 22:55:16.950098207 +0200
++++ usr/lib/setup/INShd	2014-05-25 22:48:45.930013493 +0200
+@@ -27,10 +27,10 @@
+  cat << EOF > $TMP/tempmsg
+ In order to install directly from the hard disk you must have a
+ partition (such as /dev/sda1, /dev/sdb5, etc) with the 
+-distribution's slackware64/ directory like you'd find it on the FTP
++distribution's linux64/ directory like you'd find it on the FTP
+ site.  It can be in another directory.  For example, if the
+-distribution is in /stuff/slackware64/, then you have to have
+-directories named /stuff/slackware64/a, /stuff/slackware64/ap, and so
++distribution is in /stuff/linux64/, then you have to have
++directories named /stuff/linux64/a, /stuff/linux64/ap, and so
+ on each containing the files that would be in that directory on
+ the FTP site.  You may install from FAT or Linux partitions.
+ 
+@@ -55,15 +55,15 @@
+ 
+ dialog --title "SELECT SOURCE DIRECTORY" --inputbox \
+ "Now we need to know the full path on this partition to the\n\
+-slackware64/ directory where the directories containing\n\
++linux64/ directory where the directories containing\n\
+ installation files and packages to be installed are kept.\n\
+ For example, if you downloaded  into the /stuff\n\
+ directory on your hard drive (so that you have the\n\
+-directories /stuff/slackware64/a, /stuff/slackware64/ap, and so on\n\
++directories /stuff/linux64/a, /stuff/linux64/ap, and so on\n\
+ each containing the files that would be in that directory on\n\
+ the FTP site), then the full path to enter here would be:\n\
+ \n\
+-      /stuff/slackware64\n\
++      /stuff/linux64\n\
+ \n\
+ What directory are the  sources in?" \
+ 19 65 2> $TMP/source.dir
+@@ -113,12 +113,12 @@
+ 
+ # First, check if a  ISO image is present in $SLACK_SOURCE_LOCATION
+ if check_iso_image /var/log/mount/$SLACK_SOURCE_LOCATION /var/log/mntiso ; then
+- echo "/var/log/mntiso/slackware64" > $TMP/SeTDS
++ echo "/var/log/mntiso/linux64" > $TMP/SeTDS
+  echo "-source_mounted" > $TMP/SeTmount
+  echo "/dev/null" > $TMP/SeTsource
+  exit
+-elif [ -f /var/log/mount/$SLACK_SOURCE_LOCATION/slackware64/PACKAGES.TXT ]; then
+- echo "/var/log/mount/$SLACK_SOURCE_LOCATION/slackware64" > $TMP/SeTDS
++elif [ -f /var/log/mount/$SLACK_SOURCE_LOCATION/linux64/PACKAGES.TXT ]; then
++ echo "/var/log/mount/$SLACK_SOURCE_LOCATION/linux64" > $TMP/SeTDS
+  echo "-source_mounted" > $TMP/SeTmount
+  echo "/dev/null" > $TMP/SeTsource
+  exit
+diff -burN usr.orig/lib/setup/INSNFS usr/lib/setup/INSNFS
+--- usr.orig/lib/setup/INSNFS	2014-05-25 22:55:16.950098207 +0200
++++ usr/lib/setup/INSNFS	2014-05-25 22:49:54.121156304 +0200
+@@ -50,7 +50,7 @@
+  The installation script needs to know the name of the 
+  directory on your server that contains the series'
+  subdirectories.  For example, if your A series is found at 
+- /slack/slackware64/a, then you would respond: /slack/slackware64
++ /stuff/linux64/a, then you would respond: /stuff/linux64
+  
+  What is the  source directory?
+ EOF
+@@ -112,9 +112,9 @@
+   # OK with the NFS mount.
+   # First, check if a  ISO image is present in /var/log/mount
+   if check_iso_image /var/log/mount /var/log/mntiso ; then
+-   echo "/var/log/mntiso/slackware64" > $TMP/SeTDS 
+-  elif [ -r /var/log/mount/slackware64/PACKAGES.TXT ]; then
+-   echo "/var/log/mount/slackware64" > $TMP/SeTDS 
++   echo "/var/log/mntiso/linux64" > $TMP/SeTDS 
++  elif [ -r /var/log/mount/linux64/PACKAGES.TXT ]; then
++   echo "/var/log/mount/linux64" > $TMP/SeTDS 
+   else
+    echo "/var/log/mount" > $TMP/SeTDS
+   fi
+diff -burN usr.orig/lib/setup/INSSMB usr/lib/setup/INSSMB
+--- usr.orig/lib/setup/INSSMB	2014-05-25 22:55:16.950098207 +0200
++++ usr/lib/setup/INSSMB	2014-05-25 22:50:55.098389795 +0200
+@@ -52,7 +52,7 @@
+  The installation script needs to know the name of the
+  directory below your Samba share that contains the series
+  subdirectories. For example, if your A series is found at 
+- /slack/slackware64/a, then you would respond: /slack/slackware64
++ /stuff/linux64/a, then you would respond: /stuff/linux64
+  
+  What is the  source directory?
+ EOF
+@@ -79,7 +79,7 @@
+   mount -t cifs >> $TMP/mntout 2>/dev/null
+   echo "" >> $TMP/mntout
+   if [ -f /var/log/mount/$REMOTE_PATH/a/tagfile \
+-       -o -f /var/log/mount/$REMOTE_PATH/slackware64/a/tagfile ];
++       -o -f /var/log/mount/$REMOTE_PATH/linux64/a/tagfile ];
+   then
+    echo "A  package tree was found! Ready to continue." >> $TMP/mntout
+    DEFANSW="no"
+@@ -114,7 +114,7 @@
+ if [ -f /var/log/mount/$REMOTE_PATH/a/tagfile ]; then
+  echo "/var/log/mount/$REMOTE_PATH" > $TMP/SeTDS 
+ else
+- echo "/var/log/mount/${REMOTE_PATH}/slackware64" > $TMP/SeTDS 
++ echo "/var/log/mount/${REMOTE_PATH}/linux64" > $TMP/SeTDS 
+ fi
+ echo "-source_mounted" > $TMP/SeTmount
+ echo "/dev/null" > $TMP/SeTsource
+diff -burN usr.orig/lib/setup/INSURL usr/lib/setup/INSURL
+--- usr.orig/lib/setup/INSURL	2014-05-25 22:55:16.951098195 +0200
++++ usr/lib/setup/INSURL	2014-05-25 22:52:44.376016127 +0200
+@@ -93,7 +93,7 @@
+  The installation script needs to know the name of the 
+  directory on your server that contains the series
+  subdirectories. For example, if your A series is found at 
+- /slack/slackware64/a, then you would respond: /slack/slackware64
++ /stuff/linux64/a, then you would respond: /stuff/linux64
+  
+  What is the  source directory?
+ EOF
+@@ -179,7 +179,7 @@
+ done
+ 
+ if [ -r /var/log/mount/treecache/PACKAGES.TXT ]; then
+- echo "/var/log/mount/treecache/slackware64" > $TMP/SeTDS 
++ echo "/var/log/mount/treecache/linux64" > $TMP/SeTDS 
+  echo "-source_mounted" > $TMP/SeTmount
+  echo "/dev/null" > $TMP/SeTsource
+  echo "${REMOTE_URL},${REMOTE_ROOT}" > $TMP/SeTremotesvr
+@@ -187,7 +187,7 @@
+  dialog --title "INITIALIZING PACKAGE TREE" --infobox \
+   "\nSetting up local cache for the FTP/HTTP server's package tree ..." 5 72
+ 
+- mkdir slackware64 isolinux 2>/dev/null
++ mkdir linux64 isolinux 2>/dev/null
+  wget -q -P ./isolinux $REMOTE_URL$REMOTE_ROOT/isolinux/setpkg
+ 
+  # Create a local package tree with zero-byte package placeholders:
+@@ -230,10 +230,10 @@
+  dialog --title "INITIALIZING PACKAGE TREE" --infobox \
+   "\nRetrieving tagfile information for the package tree ..." 5 65
+ 
+- for series in $(ls -1 slackware64) ; do
+-  wget -q -P ./slackware64/$series $REMOTE_URL$REMOTE_ROOT/slackware64/$series/tagfile
+-  wget -q -P ./slackware64/$series $REMOTE_URL$REMOTE_ROOT/slackware64/$series/maketag.ez
+-  wget -q -P ./slackware64/$series $REMOTE_URL$REMOTE_ROOT/slackware64/$series/maketag
++ for series in $(ls -1 linux64) ; do
++  wget -q -P ./linux64/$series $REMOTE_URL$REMOTE_ROOT/linux64/$series/tagfile
++  wget -q -P ./linux64/$series $REMOTE_URL$REMOTE_ROOT/linux64/$series/maketag.ez
++  wget -q -P ./linux64/$series $REMOTE_URL$REMOTE_ROOT/linux64/$series/maketag
+  done
+ else
+  dialog --title "REMOTE SERVER CONFIGURATION" --msgbox \
+diff -burN usr.orig/lib/setup/INSUSB usr/lib/setup/INSUSB
+--- usr.orig/lib/setup/INSUSB	2014-05-25 22:55:16.951098195 +0200
++++ usr/lib/setup/INSUSB	2014-05-25 22:54:11.889916040 +0200
+@@ -51,14 +51,14 @@
+ for DEVICE in $REMOVEABLE_DEVICES ; do
+   for PARTITION in 1 2 3 4 ; do
+     mount /dev/$DEVICE$PARTITION /usb-stick 1> /dev/null 2> /dev/null
+-    if [ -d /usb-stick/slackware64/a ]; then
++    if [ -d /usb-stick/linux64/a ]; then
+       DRIVE_FOUND="/dev/$DEVICE$PARTITION"
+-      INSTALL_PATH="/usb-stick/slackware64"
++      INSTALL_PATH="/usb-stick/linux64"
+       break
+     fi
+-    if [ -d /usb-stick/slackware64*-*/slackware64/a ]; then
++    if [ -d /usb-stick/linux64*-*/linux64/a ]; then
+       DRIVE_FOUND="/dev/$DEVICE$PARTITION"
+-      INSTALL_PATH=$(echo /usb-stick/slackware64*-*/slackware64)
++      INSTALL_PATH=$(echo /usb-stick/linux64*-*/linux64)
+       break
+     fi
+     umount /usb-stick 1> /dev/null 2> /dev/null
+@@ -69,14 +69,14 @@
+ if [ "$DRIVE_FOUND" = "" ]; then
+   for DEVICE in $REMOVEABLE_DEVICES ; do
+     mount /dev/$DEVICE /usb-stick 1> /dev/null 2> /dev/null
+-    if [ -d /usb-stick/slackware64/a ]; then
++    if [ -d /usb-stick/linux64/a ]; then
+       DRIVE_FOUND="/dev/$DEVICE"
+-      INSTALL_PATH="/usb-stick/slackware64"
++      INSTALL_PATH="/usb-stick/linux64"
+       break
+     fi
+-    if [ -d /usb-stick/slackware64*-*/slackware64/a ]; then
++    if [ -d /usb-stick/linux64*-*/linux64/a ]; then
+       DRIVE_FOUND="/dev/$DEVICE$PARTITION"
+-      INSTALL_PATH=$(echo /usb-stick/slackware64*-*/slackware64)
++      INSTALL_PATH=$(echo /usb-stick/linux64*-*/linux64)
+       break
+     fi
+   done

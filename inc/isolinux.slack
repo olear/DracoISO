@@ -5,7 +5,7 @@ timeout 600
 display boot.msg
 
 menu background splash.jpg
-menu title Welcome to DracoLinux!
+menu title Welcome to pkgsrc on Linux!
 
         menu color screen       37;40      #00000000 #00000000 none
         menu color border       30;44      #00000000 #00000000 none
@@ -28,31 +28,9 @@ menu title Welcome to DracoLinux!
         menu color msg07        37;40      #FFC42F1E #00000000 none
 
 label linux
-  menu label Install desktop system
-  menu default
-  kernel vmlinuz
-  append initrd=initrd.img ks=cdrom:/ks.cfg 
-label linuxusb
-  menu label Install desktop system (USB)
-  menu default
-  kernel vmlinuz
-  append initrd=initrd.img ks=hd:sda1:/ks.cfg method=hd:sda1:/centos 
-label vesa
-  menu label Install desktop system with basic video driver
-  kernel vmlinuz
-  append initrd=initrd.img xdriver=vesa nomodeset ks=cdrom:/ks.cfg
-label vesausb
-  menu label Install desktop system with basic video driver (USB)
-  kernel vmlinuz
-  append initrd=initrd.img xdriver=vesa nomodeset ks=hd:sda1:/ks.cfg method=hd:sda1:/centos
-label rescue
-  menu label Rescue installed desktop system
-  kernel vmlinuz
-  append initrd=initrd.img rescue
-label diy
-  menu label Install a core Linux system (pkgsrc-on-slack)
+  menu label Install or rescue Linux system
   kernel bzImage
-  append initrd=diy.img load_ramdisk=1 prompt_ramdisk=0 rw printk.time=0 nomodeset SLACK_KERNEL=huge.s
+  append initrd=linux.img load_ramdisk=1 prompt_ramdisk=0 rw printk.time=0 nomodeset SLACK_KERNEL=huge.s
 label memtest86
   menu label Memory test
   kernel memtest
